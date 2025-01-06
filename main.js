@@ -36,31 +36,31 @@ function playRound(humanChoice,computerChoice) {
 
 }
 
-function Round() {
-    let Winner = "Nobody"
-    for (let i = 0; i<=5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection,computerSelection)
-        console.log(humanScore," ",computerScore)
-    }
+// function Round() {
+//     let Winner = "Nobody"
+//     for (let i = 0; i<=5; i++) {
+//         const humanSelection = getHumanChoice();
+//         const computerSelection = getComputerChoice();
+//         playRound(humanSelection,computerSelection)
+//         console.log(humanScore," ",computerScore)
+//     }
 
-    if (computerScore > humanScore) {
-        Winner = "Computer"
-    } else {
-        Winner = "Human"
-    }
+//     if (computerScore > humanScore) {
+//         Winner = "Computer"
+//     } else {
+//         Winner = "Human"
+//     }
 
-    let rePlay =  prompt("The Winner was " + Winner + " Would you like to play again?")
+//     let rePlay =  prompt("The Winner was " + Winner + " Would you like to play again?")
 
-    if (rePlay.toLowerCase === "yes") {
-        Round()
-    } else {
-        alert("ok Goodbye")
-    }
-}
+//     if (rePlay.toLowerCase === "yes") {
+//         Round()
+//     } else {
+//         alert("ok Goodbye")
+//     }
+// }
 
-Round()
+// Round()
 
 
 
