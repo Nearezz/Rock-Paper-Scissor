@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+  <div id="container">
+    <header>
+      <h1>Rock Paper Scissors</h1>
+      <p>First to 5 wins!</p>
+    </header>
+
+    <main>
+      <section id="round-info">
+        <div class="choice-display">
+          <div class="player-choice">
+            <img src="./Images/Black_question_mark.png" alt="Player's choice" class="choice-icon" id="playerIcon">
+            <p id="playerTag">Player: </p>
+          </div>
+          <div class="computer-choice">
+            <img src="./Images/Black_question_mark.png" alt="Computer's choice" class="choice-icon" id="computerIcon">
+            <p class="computerTag">Computer: </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="choices">
+        <button class="choice" id="paper">
+          <img src="./Images/paper.png" alt="Paper" class="choice-icon">
+        </button>
+        <button class="choice" id="scissor">
+          <img src="./Images/scissors.png" alt="Scissors" class="choice-icon">
+        </button>
+        <button class="choice" id="rock">
+          <img src="./Images/rock.png" alt="Rock" class="choice-icon">
+        </button>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

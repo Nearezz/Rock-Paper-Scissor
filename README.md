@@ -1,2 +1,2 @@
 # Rock-Paper-Scissor
-Rock paper scissor project
+A Rock paper scissor project

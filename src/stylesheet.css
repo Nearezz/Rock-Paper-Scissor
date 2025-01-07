@@ -1,0 +1,81 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #333333;
+    margin: 0;
+}
+
+header p {
+    font-size: 1rem;
+    color: #666666;
+    margin: 5px 0 20px;
+}
+
+/* Section: Round Info */
+#round-info {
+    margin-bottom: 20px;
+}
+
+.choice-display {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.choice-display div {
+    text-align: center;
+}
+
+.choice-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+/* Section: Choices */
+#choices {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.choice {
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.choice:hover {
+    transform: scale(1.1);
+}
+
+.choice-icon {
+    width: 60%;
+    height: auto;
+}
