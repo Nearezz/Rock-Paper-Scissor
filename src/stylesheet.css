@@ -82,8 +82,8 @@ header p {
 
 .popup.hide {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5); /* Scale down while keeping it centered */
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translate(-50%, -50%) scale(0.3);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease-in-out;
 }
 
 /* Pop-up text styling */
