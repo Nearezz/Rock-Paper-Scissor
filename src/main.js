@@ -15,7 +15,7 @@ const imgSrc = new Map([
 
 
 
-const winnerArray = [["rock","scissors"],["scissors","paper"],["paper","rock"]]
+const winnerArrayCombination = [["rock","scissors"],["scissors","paper"],["paper","rock"]]
 
 
 function getComputerChoice() {
@@ -25,11 +25,12 @@ function getComputerChoice() {
 }
 
 
-const uIChangeMap = new Map([
+const uIChangeMap = new Map([ //make this into function see where code is repeating you are tired right now go to sleep.
     ["player", () => {
         const container = document.querySelector("#container");
         const winnerTitle = document.querySelector("h1");
         winnerTitle.textContent = "Player Wins";
+        const score = document.querySelector("playerTag")
     }],
     ["computer", () => {
         const container = document.querySelector("#container");
@@ -46,10 +47,7 @@ const uIChangeMap = new Map([
 
 
 function roundWinner(choiceArr) {
-    console.log(
-        winnerArray.some((pair) => pair[0] === choiceArr[0] && pair[1] === choiceArr[1])
-    );
-    if (winnerArray.some((pair) => pair[0] === choiceArr[0] && pair[1] === choiceArr[1])) {
+    if (winnerArrayCombination.some((pair) => pair[0] === choiceArr[0] && pair[1] === choiceArr[1])) {
         uIChangeMap.get("player")();
     } else if (choiceArr[0] === choiceArr[1]) {
         uIChangeMap.get("draw")();
