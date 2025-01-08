@@ -35,23 +35,86 @@ header p {
 /* Section: Round Info */
 #round-info {
     margin-bottom: 20px;
+    position: relative;
 }
 
 .choice-display {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 
 .choice-display div {
     text-align: center;
 }
 
-
 .choice-icon {
     width: 50px;
     height: 50px;
     margin-bottom: 10px;
+}
+
+/* Pop-up Styling */
+.popup {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center center; /* Ensure the scaling happens from the center */
+}
+
+.popup.show {
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5); /* Scale down while keeping it centered */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Pop-up text styling */
+#popupText {
+    font-size: 1.5rem;
+    color: #333333;
+    margin: 1vh;
+    padding: 1vh;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Pop-up button styling */
+#popUpButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#popUpButton:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+#popUpButton:focus {
+    outline: none;
 }
 
 /* Section: Choices */
@@ -79,20 +142,5 @@ header p {
 .choice-icon {
     width: 60%;
     height: auto;
-}
-
-
-/* Pop-up */
-.popup {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #000;
-    border-radius: 10px;
-    max-width: 25vh;
-    position: absolute;
-    top: 40%;
-    left: 46%;
 }
 

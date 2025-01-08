@@ -1,6 +1,9 @@
 const choices = document.querySelectorAll(".choice")
 const playerChoiceIcon = document.querySelector("#playerIcon")
 const computerChoiceIcon = document.querySelector("#computerIcon")
+const popup = document.querySelector(".popup")
+const popUpButton = document.querySelector("#popUpButton")
+const popUpText = document.querySelector("#popUpText")
 
 let round = 0 
 let playerScore = 0
@@ -12,6 +15,25 @@ const imgSrc = new Map([
     ["rock","http://127.0.0.1:5500/src/Images/rock.png"],
     ["scissors","http://127.0.0.1:5500/src/Images/scissors.png"]
 ])
+
+
+function showPopUp() {
+    popup.style.display = 'flex'
+
+    setTimeout(() => {
+        popUpButton.classList.remove('hide')
+        popUpButton.classList.add('show')
+    },10)
+}
+
+function hidePopUp() {
+    popup.classList.remove('show')
+    popup.classList.add('hide')
+
+    setTimeout(() => {
+        popup.style.display = 'none'
+    },100)
+}
 
 
 
@@ -59,14 +81,23 @@ const outcomeHandlers  = new Map([
     }],
 ]);
 
+popUpButton.addEventListener("click", () => {
+    location.reload()
+    hidePopUp()
 
+    if (playerScore>computerScore) {
+        popUpText.textContent = "You Win"
+    } else if (playerScore === computerScore) {
+        popUpText.textContent = "Draw"
+    } else {
+        popUpText.textContent === "You Lose"
+    }
+})
 
 function roundWinner(plr,comp) {  
     const plrVal = choiceValues.get(plr)
     const compVal = choiceValues.get(comp)
-
     const roundWinner = fourmula(plrVal,compVal)
-    console.log(roundWinner,plrVal,compVal)
     outcomeHandlers.get(roundWinner)()    
 }
 
@@ -74,19 +105,21 @@ function roundWinner(plr,comp) {
 
 choices.forEach((choice) => {
     choice.addEventListener("click", () => {
-        if (round === 5) {
-           alert("Round is over")
+        console.log(round)
+        if (round === 3) {
+          showPopUp()
+        } else 
+        {
+            round++
+            const img = choice.querySelector("img")
+            const computerChoice = getComputerChoice()
+            const playerChoice = img.alt
+
+            playerChoiceIcon.src = img.src
+            computerChoiceIcon.src = imgSrc.get(computerChoice)
+
+            roundWinner(playerChoice,computerChoice)
         }
-
-        round++
-        const img = choice.querySelector("img")
-        const computerChoice = getComputerChoice()
-        const playerChoice = img.alt
-
-        playerChoiceIcon.src = img.src
-        computerChoiceIcon.src = imgSrc.get(computerChoice)
-
-        roundWinner(playerChoice,computerChoice)
 
     })
 })
