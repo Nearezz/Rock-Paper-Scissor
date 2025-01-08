@@ -2,10 +2,6 @@ const choices = document.querySelectorAll(".choice")
 const playerChoiceIcon = document.querySelector("#playerIcon")
 const computerChoiceIcon = document.querySelector("#computerIcon")
 
-let PlayerScore = 0
-let computerScore = 0
-
-let playerAndComputerChoice = []
 
 const imgSrc = new Map([
     ["paper","http://127.0.0.1:5500/src/Images/paper.png"],
@@ -15,7 +11,7 @@ const imgSrc = new Map([
 
 
 
-let fourmula = (a,b) => (b-a)%3
+
 
 function getComputerChoice() {
     choicesForComputer = ["rock","paper","scissors"]
@@ -29,10 +25,10 @@ const choiceValues = new Map([
     ["scissors",2]
 ])
 
+const fourmula = (a,b) => (3+(b-a))%3
 
 
-
-const outcomeHandlers  = new Map([ //make this into function see where code is repeating you are tired right now go to sleep.
+const outcomeHandlers  = new Map([
     [2, () => {
         const container = document.querySelector("#container");
         const winnerTitle = document.querySelector("h1");
@@ -58,6 +54,7 @@ function roundWinner(plr,comp) {
     const compVal = choiceValues.get(comp)
 
     const roundWinner = fourmula(plrVal,compVal)
+    console.log(roundWinner,plrVal,compVal)
     outcomeHandlers.get(roundWinner)()
 }
 
@@ -74,8 +71,6 @@ choices.forEach((choice) => {
         computerChoiceIcon.src = imgSrc.get(computerChoice)
 
         roundWinner(playerChoice,computerChoice)
-
-
 
     })
 })
