@@ -80,3 +80,19 @@ header p {
     width: 60%;
     height: auto;
 }
+
+
+/* Pop-up */
+.popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+    max-width: 25vh;
+    position: absolute;
+    top: 40%;
+    left: 46%;
+}
+
