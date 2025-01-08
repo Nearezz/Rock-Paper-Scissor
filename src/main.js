@@ -15,8 +15,7 @@ const imgSrc = new Map([
 
 
 
-const winnerArrayCombination = [["rock","scissors"],["scissors","paper"],["paper","rock"]]
-
+let fourmula = (a,b) => (b-a)%3
 
 function getComputerChoice() {
     choicesForComputer = ["rock","paper","scissors"]
@@ -24,20 +23,28 @@ function getComputerChoice() {
     return choicesForComputer[randomChoice]
 }
 
+const choiceValues = new Map([
+    ["rock",0],
+    ["paper",1],
+    ["scissors",2]
+])
 
-const uIChangeMap = new Map([ //make this into function see where code is repeating you are tired right now go to sleep.
-    ["player", () => {
+
+
+
+const outcomeHandlers  = new Map([ //make this into function see where code is repeating you are tired right now go to sleep.
+    [2, () => {
         const container = document.querySelector("#container");
         const winnerTitle = document.querySelector("h1");
         winnerTitle.textContent = "Player Wins";
         const score = document.querySelector("playerTag")
     }],
-    ["computer", () => {
+    [1, () => {
         const container = document.querySelector("#container");
         const winnerTitle = document.querySelector("h1");
         winnerTitle.textContent = "Computer Wins";
     }],
-    ["draw", () => {
+    [0, () => {
         const container = document.querySelector("#container");
         const winnerTitle = document.querySelector("h1");
         winnerTitle.textContent = "Nobody Wins";
@@ -46,28 +53,29 @@ const uIChangeMap = new Map([ //make this into function see where code is repeat
 
 
 
-function roundWinner(choiceArr) {
-    if (winnerArrayCombination.some((pair) => pair[0] === choiceArr[0] && pair[1] === choiceArr[1])) {
-        uIChangeMap.get("player")();
-    } else if (choiceArr[0] === choiceArr[1]) {
-        uIChangeMap.get("draw")();
-    } else {
-        uIChangeMap.get("computer")();
-    }
+function roundWinner(plr,comp) {
+    const plrVal = choiceValues.get(plr)
+    const compVal = choiceValues.get(comp)
+
+    const roundWinner = fourmula(plrVal,compVal)
+    outcomeHandlers.get(roundWinner)()
 }
 
 
 
 choices.forEach((choice) => {
     choice.addEventListener("click", () => {
-        choiceArray = []
         const img = choice.querySelector("img")
+
         const computerChoice = getComputerChoice()
         const playerChoice = img.alt
+
         playerChoiceIcon.src = img.src
         computerChoiceIcon.src = imgSrc.get(computerChoice)
-        choiceArray.push(playerChoice,computerChoice)
-        roundWinner(choiceArray)
+
+        roundWinner(playerChoice,computerChoice)
+
+
 
     })
 })
