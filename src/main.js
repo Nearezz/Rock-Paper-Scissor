@@ -4,6 +4,9 @@ const computerChoiceIcon = document.querySelector("#computerIcon");
 const popup = document.querySelector(".popup");
 const popUpButton = document.querySelector("#popUpButton");
 const popUpText = document.querySelector("#popupText");
+const container = document.querySelector("#container");
+const winnerTitle = document.querySelector("h1");
+const roundTitle = document.querySelector("#round-info")
 
 let round = 0;
 let playerScore = 0;
@@ -26,23 +29,17 @@ const fourmula = (a, b) => (3 + (b - a)) % 3;
 const outcomeHandlers = new Map([
     [2, () => {
         playerScore++;
-        const container = document.querySelector("#container");
-        const winnerTitle = document.querySelector("h1");
         winnerTitle.textContent = "Player Wins";
         const score = document.querySelector("#playerTag");
         score.textContent = playerScore;
     }],
     [1, () => {
         computerScore++;
-        const container = document.querySelector("#container");
-        const winnerTitle = document.querySelector("h1");
         winnerTitle.textContent = "Computer Wins";
         const score = document.querySelector("#computerTag");
         score.textContent = computerScore;
     }],
     [0, () => {
-        const container = document.querySelector("#container");
-        const winnerTitle = document.querySelector("h1");
         winnerTitle.textContent = "Nobody Wins";
     }]
 ]);
@@ -51,10 +48,13 @@ function showPopUp() {
     popup.style.display = 'flex';
     if (playerScore > computerScore) {
         popUpText.textContent = "You Win";
+        winnerTitle.textContent = popUpText.textContent
     } else if (playerScore === computerScore) {
         popUpText.textContent = "Draw";
+        winnerTitle.textContent = popUpText.textContent
     } else {
         popUpText.textContent = "You Lose";
+        winnerTitle.textContent = popUpText.textContent
     }
     setTimeout(() => {
         popUpButton.classList.remove('hide');
@@ -92,10 +92,10 @@ function roundWinner(plr, comp) {
 
 choices.forEach((choice) => {
     choice.addEventListener("click", () => {
-        console.log(round);
-        if (round === 3) {
+        if (round === 5) {
             showPopUp();
         } else {
+            roundTitle.textContent = round
             round++;
             const img = choice.querySelector("img");
             const computerChoice = getComputerChoice();
